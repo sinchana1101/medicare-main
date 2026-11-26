@@ -1,0 +1,78 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:medicare_flutter/services/voice_intent_service.dart';
+
+void main() {
+  test('VoiceIntentService matches common commands', () {
+    final tests = {
+      'home': VoiceIntent.home,
+      'go home': VoiceIntent.home,
+      'open home': VoiceIntent.home,
+      'scan': VoiceIntent.scan,
+      'open scan': VoiceIntent.scan,
+      'camera': VoiceIntent.scan,
+      'open camera': VoiceIntent.scan,
+      'from home to scan': VoiceIntent.scan,
+      'home to scan': VoiceIntent.scan,
+      'can': VoiceIntent.scan,
+      'scanner': VoiceIntent.scan,
+      'prescription': VoiceIntent.scan,
+      'scan prescription': VoiceIntent.scan,
+      'schedule': VoiceIntent.schedule,
+      'my medicines': VoiceIntent.schedule,
+      'reminders': VoiceIntent.schedule,
+      'emergency': VoiceIntent.emergency,
+      'sos': VoiceIntent.emergency,
+      'settings': VoiceIntent.more,
+      'take photo': VoiceIntent.takePhoto,
+      'click': VoiceIntent.takePhoto,
+      'capture': VoiceIntent.takePhoto,
+      'mark taken': VoiceIntent.markTaken,
+      'skip dose': VoiceIntent.skipDose,
+      'stop': VoiceIntent.stop,
+      'go back': VoiceIntent.back,
+      'run safety check': VoiceIntent.safetyCheck,
+      'safety check': VoiceIntent.safetyCheck,
+      'check safety': VoiceIntent.safetyCheck,
+      'check my medicines': VoiceIntent.safetyCheck,
+      'delete duplicate': VoiceIntent.deleteDuplicate,
+      'delete duplicate medicine': VoiceIntent.deleteDuplicate,
+      'remove duplicate': VoiceIntent.deleteDuplicate,
+      'ನಕಲಿ ಔಷಧಿ ಅಳಿಸಿ': VoiceIntent.deleteDuplicate,
+      'डुप्लीकेट दवा हटाएं': VoiceIntent.deleteDuplicate,
+      'ಸುರಕ್ಷತೆ ಪರಿಶೀಲಿಸಿ': VoiceIntent.safetyCheck,
+      'ಸುರಕ್ಷತೆ': VoiceIntent.safetyCheck,
+      'सुरक्षा जांच': VoiceIntent.safetyCheck,
+      'सुरक्षा': VoiceIntent.safetyCheck,
+      'check warnings': VoiceIntent.checkWarnings,
+      'show warnings': VoiceIntent.checkWarnings,
+      'warnings': VoiceIntent.checkWarnings,
+      'side effects': VoiceIntent.checkWarnings,
+      'check side effects': VoiceIntent.checkWarnings,
+      'show side effects': VoiceIntent.checkWarnings,
+      'ಎಚ್ಚರಿಕೆಗಳನ್ನು ತೋರಿಸಿ': VoiceIntent.checkWarnings,
+      'ಅಡ್ಡಪರಿಣಾಮಗಳು': VoiceIntent.checkWarnings,
+      'ಎಚ್ಚರಿಕೆ': VoiceIntent.checkWarnings,
+      'ಸೈಡ್ ಎಫೆಕ್ಟ್ಸ್': VoiceIntent.checkWarnings,
+      'ಮಾತ್ರೆಗಳ ಅಡ್ಡಪರಿಣಾಮಗಳು': VoiceIntent.checkWarnings,
+      'चेतावनियां दिखाएं': VoiceIntent.checkWarnings,
+      'साइड इफेक्ट्स': VoiceIntent.checkWarnings,
+      'दुष्प्रभाव': VoiceIntent.checkWarnings,
+      'दवा के साइड इफेक्ट्स': VoiceIntent.checkWarnings,
+      'चेतावनी': VoiceIntent.checkWarnings,
+            'delete all data': VoiceIntent.deleteAllMedicines,
+      'clear all data': VoiceIntent.deleteAllMedicines,
+      'delete all medicines': VoiceIntent.deleteAllMedicines,
+      'ಎಲ್ಲಾ ಡೇಟಾ ಅಳಿಸಿ': VoiceIntent.deleteAllMedicines,
+      'सारा डेटा हटाएं': VoiceIntent.deleteAllMedicines,
+      'delete warning medicine': VoiceIntent.deleteWarningMedicine,
+      'delete side effect medicine': VoiceIntent.deleteWarningMedicine,
+      'ಎಚ್ಚರಿಕೆ ಔಷಧಿ ಅಳಿಸಿ': VoiceIntent.deleteWarningMedicine,
+      'चेतावनी वाली दवा हटाएं': VoiceIntent.deleteWarningMedicine,
+    };
+
+    tests.forEach((phrase, expected) {
+      final matched = VoiceIntentService.matchIntent(phrase);
+      expect(matched, expected, reason: "Failed for '$phrase'");
+    });
+  });
+}
